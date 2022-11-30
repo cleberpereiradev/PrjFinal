@@ -13,7 +13,7 @@ public class GerenciarEmpregado {
     }
 
     public void adicionarEmpregado(Empregado e){
-        //utilizar.add
+        getListaEmpregados().add(e);
     }
 
     public void removerEmpregado(Empregado e){
