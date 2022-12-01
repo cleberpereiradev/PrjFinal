@@ -1,10 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class GerenciarEmpregado {
-    private List<Empregado> listaEmpregados = new ArrayList<>();
+    private static List<Empregado> listaEmpregados = new ArrayList<>();
 
-    public List<Empregado> getListaEmpregados() {
+    public static List<Empregado> getListaEmpregados() {
         return listaEmpregados;
     }
 
@@ -12,7 +13,20 @@ public class GerenciarEmpregado {
         this.listaEmpregados = listaEmpregados;
     }
 
-    public void adicionarEmpregado(Empregado e){
+    public static void adicionarEmpregado(Empregado emp){
+
+        Empregado e = new Empregado();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("--Adicionar empregado--");
+        System.out.println("Insira o código do empregado: ");
+        e.setCodigoEmpregado(sc.nextInt());
+        System.out.println("Insira o nome do empregado: ");
+        e.setNomeEmpregado(sc.nextLine());
+        System.out.println("Insira o setor do empregado: ");
+        e.setSetor(sc.nextLine());
+        System.out.println("Insira o salário bruto do empregado: ");
+        e.setSalarioBruto(sc.nextDouble());
+
         getListaEmpregados().add(e);
     }
 
@@ -25,6 +39,9 @@ public class GerenciarEmpregado {
     }
     public void verificarExistencia(Empregado e){
         //comparar equals codigo empregado
+        for(Object empregado : listaEmpregados){
+            if (getCodigoEmpregado().equals)
+        }
     }
 
 }

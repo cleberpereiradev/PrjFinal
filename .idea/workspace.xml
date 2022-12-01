@@ -7,7 +7,7 @@
     <list default="true" id="2bba609d-0872-46d4-b003-631cee5f2bcf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GerenciarEmpregado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GerenciarEmpregado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ParametrosInss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ParametrosInss.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +59,9 @@
       <workItem from="1669750791532" duration="1288000" />
       <workItem from="1669765656128" duration="3741000" />
       <workItem from="1669819624393" duration="1536000" />
-      <workItem from="1669839345538" duration="1133000" />
+      <workItem from="1669839345538" duration="1798000" />
+      <workItem from="1669905912869" duration="933000" />
+      <workItem from="1669925214122" duration="1766000" />
     </task>
     <servers />
   </component>
