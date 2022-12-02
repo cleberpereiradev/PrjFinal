@@ -1,5 +1,6 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,14 +24,12 @@ public class TelaPrjFinal extends JFrame implements ActionListener {
     public TelaPrjFinal(){
 
 
-
-
         painelConteudo = new JPanel();
         painelConteudo.setBorder(new EmptyBorder(5,5,5,5));
         setContentPane(painelConteudo);
         painelConteudo.setLayout(null);
 
-        dFrame = new Dimension(400,400);
+        dFrame = new Dimension(1000,800);
         dLabel = new Dimension(100,20);
         dTextField = new Dimension(150,20);
         dButton = new Dimension(80,20);
@@ -115,6 +114,7 @@ public class TelaPrjFinal extends JFrame implements ActionListener {
         btnExcluir = new Button("Excluir");
         btnExcluir.setSize(dButton);
         btnExcluir.setLocation(110,170);
+        btnExcluir.addActionListener(this);
         add(btnExcluir);
 
         btnCalcular = new Button("Calcular Inss");
@@ -129,6 +129,8 @@ public class TelaPrjFinal extends JFrame implements ActionListener {
         add(btnSair);
 
         tabela = new JTable(dados,colunas);
+        DefaultTableModel model = new DefaultTableModel(dados, colunas);
+        tabela.setModel(model);
         barraRolagem = new JScrollPane(tabela);
         barraRolagem.setBounds(10,220,370,120);
         painelConteudo.add(barraRolagem);
@@ -143,28 +145,7 @@ public class TelaPrjFinal extends JFrame implements ActionListener {
         txtSalario.setText("");
     }
 
-    public void atualizaTabela(){
 
-        List<Empregado> listaEmp = new ArrayList<>();
-        listaEmp = gerencia.getListaEmpregados();
-
-        int cont = 0;
-        for(Empregado emp : listaEmp){
-
-            dados[cont][0] = emp.getCodigoEmpregado();
-            dados[cont][1] = emp.getNomeEmpregado();
-            dados[cont][2] = emp.getSetor();
-            dados[cont][3] = emp.getSalarioBruto();
-
-            System.out.println(emp.getCodigoEmpregado());
-            System.out.println(emp.getNomeEmpregado());
-            System.out.println(emp.getSetor());
-            System.out.println(emp.getSalarioBruto());
-            cont++;
-        }
-
-
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -173,10 +154,22 @@ public class TelaPrjFinal extends JFrame implements ActionListener {
             System.exit(0);
         }
         if(e.getSource() == btnSalvar){
-            gerencia.adicionarEmpregado(Integer.parseInt(txtCodigo.getText()), txtNome.getText(),txtSetor.getText(), Double.parseDouble(txtSalario.getText()));
-            limparCampos();
-            atualizaTabela();
+            DefaultTableModel dtmEmpregados = (DefaultTableModel) tabela.getModel();
+            Object[] dados = {txtCodigo.getText(),txtNome.getText(),txtSetor.getText(),txtSalario.getText()};
+            dtmEmpregados.addRow(dados);
+            gerencia.adicionarEmpregado(Integer.parseInt(txtCodigo.getText()), txtNome.getText(), txtSetor.getText(), Double.parseDouble(txtSalario.getText()));
+            gerencia.listarEmpregados();
+            //limparCampos();
             JOptionPane.showMessageDialog(null,"Dados salvos com sucesso.","Sucesso!", JOptionPane.INFORMATION_MESSAGE);
         }
+        if(e.getSource() == btnExcluir){
+            if(tabela.getSelectedRow() != -1){
+                DefaultTableModel dtmProdutos = (DefaultTableModel) tabela.getModel();
+                dtmProdutos.removeRow(tabela.getSelectedRow());
+            }else{
+                JOptionPane.showMessageDialog(null,"Selecione um empregado para Excluir");
+            }
+        }
+
     }
 }

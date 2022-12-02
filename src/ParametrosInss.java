@@ -16,7 +16,8 @@ public class ParametrosInss {
         }
     }
 
-    public double calcularInss(double salarioBruto){
+
+    public static double calcularInss(double salarioBruto){
         double calculaRecInss = 0;
 
         for(int i = 0; i < limiteFaixa.length; i++){
@@ -27,7 +28,9 @@ public class ParametrosInss {
                 calculaRecInss += calculaRecInss;
             }
             else if(salarioBruto > limiteFaixa[3]){
+                calculaRecInss = faixa[i] * (limiteFaixa[i] - limiteFaixa[i-1]);
                 calculaRecInss += calculaRecInss;
+
             }
         }
             return calculaRecInss;
