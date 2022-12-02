@@ -13,21 +13,15 @@ public class GerenciarEmpregado {
         this.listaEmpregados = listaEmpregados;
     }
 
-    public static void adicionarEmpregado(Empregado emp){
+    public static void adicionarEmpregado(int codigo,String nome, String setor, double salarioBruto){
 
-        Empregado e = new Empregado();
-        Scanner sc = new Scanner(System.in);
-        System.out.println("--Adicionar empregado--");
-        System.out.println("Insira o código do empregado: ");
-        e.setCodigoEmpregado(sc.nextInt());
-        System.out.println("Insira o nome do empregado: ");
-        e.setNomeEmpregado(sc.nextLine());
-        System.out.println("Insira o setor do empregado: ");
-        e.setSetor(sc.nextLine());
-        System.out.println("Insira o salário bruto do empregado: ");
-        e.setSalarioBruto(sc.nextDouble());
+        Empregado emp = new Empregado();
+        emp.setCodigoEmpregado(codigo);
+        emp.setNomeEmpregado(nome);
+        emp.setSetor(setor);
+        emp.setSalarioBruto(salarioBruto);
 
-        getListaEmpregados().add(e);
+        getListaEmpregados().add(emp);
     }
 
     public void removerEmpregado(Empregado e){
@@ -36,12 +30,11 @@ public class GerenciarEmpregado {
 
     public void listarEmpregados(){
         //listar empregados utilizando List<Empregado>
+
     }
+
     public void verificarExistencia(Empregado e){
         //comparar equals codigo empregado
-        for(Object empregado : listaEmpregados){
-            if (getCodigoEmpregado().equals)
-        }
     }
 
 }
